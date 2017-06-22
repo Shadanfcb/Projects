@@ -58,8 +58,8 @@ def add_friend():
 
     new_friend = Spy('', '', 0, 0.0, '')
 
-    new_friend.name = raw_input("Let\'s add your friend. Enter your friends name: ")
-    new_friend.salutation = raw_input("What would you like us to call him/her? Mr. or Ms.?: ")
+    new_friend.name = raw_input("Let\'s add your friend. Enter your friends name:")
+    new_friend.salutation = raw_input('What would you like us to call him/her? Mr. or Ms.?:')
 
     new_friend.name = new_friend.salutation + " " + new_friend.name
 
@@ -146,7 +146,7 @@ def start_chat(spy):
 
     spy.name = spy.salutation + " " + spy.name
 
-    if spy.age > 12 and spy.age < 50:
+    if int(12) < spy.age < int(60):
         print "Authentication complete. Welcome to spychat " + spy.name + " age: " \
               + str(spy.age) + " and rating of: " + str(spy.rating) + " Glad to have you with us."
 
@@ -190,7 +190,7 @@ else:
     spy.name = raw_input("Welcome to spy chat, enter your spy name: ")
 
     if len(spy.name) > 0:
-        spy.salutation = raw_input("What should I call you? Mr. or Ms.?: ")
+        spy.salutation = raw_input("What should I call you? Mr. or Ms.?:")
 
         spy.age = raw_input("Please tell us your age")
         spy.age = int(spy.age)
