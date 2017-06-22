@@ -15,7 +15,7 @@ def add_status():
 
     updated_status_message = None
 
-    if spy.current_status_message != None:
+    if spy.current_status_message is not None:
 
         print 'Your current status message is %s \n' % (spy.current_status_message)
     else:
@@ -53,9 +53,10 @@ def add_status():
 
     return updated_status_message
 
+
 def add_friend():
 
-    new_friend = Spy('','',0,0.0 , '')
+    new_friend = Spy('', '', 0, 0.0, '')
 
     new_friend.name = raw_input("Let\'s add your friend. Enter your friends name: ")
     new_friend.salutation = raw_input("What would you like us to call him/her? Mr. or Ms.?: ")
@@ -76,11 +77,12 @@ def add_friend():
 
     return len(friends)
 
+
 def select_a_friend():
     item_number = 0
 
     for friend in friends:
-        print '%d. %s %s aged %d with rating %.2f is online' % (item_number +1,
+        print '%d. %s %s aged %d with rating %.2f is online' % (item_number + 1,
                                                                 friend.salutation,
                                                                 friend.name,
                                                                 friend.age,
@@ -93,6 +95,7 @@ def select_a_friend():
 
     return friend_choice_position
 
+
 def send_message():
 
     friend_choice = select_a_friend()
@@ -101,11 +104,12 @@ def send_message():
     text = raw_input("What do you want to say? ")
     Steganography.encode(original_image, output_path, text)
 
-    new_chat = ChatMessage(text,True)
+    new_chat = ChatMessage(text, True)
 
     friends[friend_choice].chats.append(new_chat)
 
     print "Your secret message image is ready and sent to your spy friend :D"
+
 
 def read_message():
 
@@ -115,11 +119,12 @@ def read_message():
 
     secret_text = Steganography.decode(output_path)
 
-    new_chat = ChatMessage(secret_text,False)
+    new_chat = ChatMessage(secret_text, False)
 
     friends[sender].chats.append(new_chat)
 
     print "Secret message has been saved! :D"
+
 
 def read_chat_history():
 
@@ -129,12 +134,13 @@ def read_chat_history():
 
     for chat in friends[read_for].chats:
         if chat.sent_by_me:
-            print  colored("[%s]:","blue") %(chat.time.strftime("%d,%B,%Y")), colored("You said", "red")
-            print  chat.message
+            print colored("[%s]:", "blue") % (chat.time.strftime("%d,%B,%Y")), colored("You said", "red")
+            print chat.message
         else:
-            print  colored("[%s]:", "blue") % (chat.time.strftime("%d,%B,%Y")),\
-            colored(friends[read_for].name + "said","red")
-            print  chat.message
+            print colored("[%s]:", "blue") % (chat.time.strftime("%d,%B,%Y")),\
+                  colored(friends[read_for].name + "said", "red")
+            print chat.message
+
 
 def start_chat(spy):
 
@@ -173,12 +179,13 @@ def start_chat(spy):
                 else:
                     show_menu = False
     else:
-        print 'Sorry you are not of the correct age to be a spy on spychat. Come to us in a few years to be a part of spychat. '
+        print 'Sorry you are not of the correct age to be a spy on spychat. ' \
+              'Come to us in a few years to be a part of spychat. '
 
 if existing.upper() == "Y":
     start_chat(spy)
 else:
-    spy = Spy('' , '', 0 ,0.0, '')
+    spy = Spy('', '', 0, 0.0, '')
 
     spy.name = raw_input("Welcome to spy chat, enter your spy name: ")
 
@@ -194,4 +201,3 @@ else:
         start_chat(spy)
     else:
         print 'Enter a valid spy name to continue using our app'
-
