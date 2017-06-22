@@ -82,11 +82,10 @@ def select_a_friend():
     item_number = 0
 
     for friend in friends:
-        print '%d. %s %s aged %d with rating %.2f is online' % (item_number + 1,
-                                                                friend.salutation,
-                                                                friend.name,
-                                                                friend.age,
-                                                                friend.rating)
+        print '%d. %s aged %d with rating %.2f is online' % (item_number + 1,
+                                                             friend.name,
+                                                             friend.age,
+                                                             friend.rating)
         item_number = item_number + 1
 
     friend_choice = raw_input("Choose a friend of your choice")
